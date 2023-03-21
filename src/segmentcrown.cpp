@@ -21,7 +21,9 @@ int main(int argc, char **argv)
 		std::cout << "Region-based segmentation: " << std::flush; 
 		std::vector<pcl::PointCloud<PointTreeseg>::Ptr> regions;
 		pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+		std::cout << "Estimating normals: " << std::flush;
 		estimateNormals(volume,50,normals);
+		std::cout << "Region segmentation: " << std::flush;
 		regionSegmentation(volume,normals,250,3,std::numeric_limits<int>::max(),smoothness,1,regions);
 		volume->clear();
 		normals->clear();
@@ -39,8 +41,8 @@ int main(int argc, char **argv)
 		//
 		std::cout << "Building tree: " << std::flush;
 		pcl::PointCloud<PointTreeseg>::Ptr tree(new pcl::PointCloud<PointTreeseg>);
-		// miguel changed the 2nd parameter from 15->10 (this is the cyclecount)
-		buildTree(regions,10,1,0.2,3,1.0,tree);
+		// 
+		buildTree(regions,15,1,0.2,3,1.0,tree);
 		ss.str("");
 		ss << id[0] << "_" << id[1] << ".pcd";
 		writer.write(ss.str(),*tree,true);
