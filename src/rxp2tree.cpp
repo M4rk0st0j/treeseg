@@ -1,6 +1,8 @@
 #include <fstream>
 #include <riegl/scanlib.hpp>
 
+#include <boost/algorithm/string.hpp>
+
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/PointIndices.h>
