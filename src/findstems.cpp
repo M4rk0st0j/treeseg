@@ -46,6 +46,7 @@ int main(int argc, char **argv)
 	std::cout << ss.str() << " | " << regions.size() << std::endl;
 	//
 	std::cout << "RANSAC cylinder fits: " << std::flush;
+
 	std::vector<std::pair<float,pcl::PointCloud<PointTreeseg>::Ptr>> cylinders;
 	nnearest = 60;
 	float dmin = std::stof(args[1]);
@@ -54,6 +55,7 @@ int main(int argc, char **argv)
 	coordfile.open(args[3]);
 	float coords[4];
 	int n = 0;
+
 	if(coordfile.is_open())
 	{
 		while(!coordfile.eof())
@@ -67,6 +69,7 @@ int main(int argc, char **argv)
 	float xmax = coords[1];
 	float ymin = coords[2];
 	float ymax = coords[3];
+	
 	float lmin = 2.5; //assumes 3m slice
 	float stepcovmax = 0.1;
 	float radratiomin = 0.9;
@@ -99,9 +102,12 @@ int main(int argc, char **argv)
 	ss << id[0] << ".intermediate.slice.clusters.regions.cylinders.pcd";
 	writeClouds(cyls,ss.str(),false);
 	std::cout << ss.str() << " | " << cyls.size() << std::endl;
+
 	//
 	std::cout << "Principal component trimming: " << std::flush;
-	float anglemax = 35;
+	// MIKE CHANGED ANGLEMAX
+	float anglemax = 35;	
+	// float anglemax = 75;
 	std::vector<int> idx;
 	for(int j=0;j<cyls.size();j++)
 	{
@@ -119,8 +125,8 @@ int main(int argc, char **argv)
         for(int k=0;k<idx.size();k++) pca.push_back(cyls[idx[k]]);	
 	ss.str("");
 	ss << id[0] << ".intermediate.slice.clusters.regions.cylinders.principal.pcd";
-	writeClouds(pca,ss.str(),false);
 	std::cout << ss.str() << " | " << pca.size() << std::endl;
+	writeClouds(pca,ss.str(),false);
 	//
 	std::cout << "Concatenating stems: " << std::flush;
 	float expansionfactor = 0;

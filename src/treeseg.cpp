@@ -833,10 +833,20 @@ std::vector<std::vector<float>> getDtmAndSlice(const pcl::PointCloud<PointTreese
 		spatial1DFilter(plot,"x",x,x+resolution,tmpcloud);
 		for(float y=plotmin[1];y<plotmax[1];y+=resolution)
 		{
+
 			spatial1DFilter(tmpcloud,"y",y,y+resolution,tile);
 			std::sort(tile->points.begin(),tile->points.end(),sortCloudByZ);
+
+
 			int idx = (percentile / 100) * tile->points.size();
-			float ground = tile->points[idx].z;
+
+			// MIKE ADDED IF
+			float ground = 0.0;
+			if(tile->points.size() > 0)
+			{
+				ground = tile->points[idx].z;
+			}
+
 			result.push_back(x);
 			result.push_back(y);
 			result.push_back(ground);
