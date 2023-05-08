@@ -72,16 +72,22 @@ int main(int argc, char **argv)
 	
 	float lmin = 2.5; //assumes 3m slice
 	float stepcovmax = 0.1;
-	float radratiomin = 0.9;
+	// Mike changed this value
+	//float radratiomin = 0.9;
+	float radratiomin = 0.85;
+	std::cout << "Mike says: " << dmin << " " << dmax << " " << lmin << std::endl;
 	for(int i=0;i<regions.size();i++)
 	{
 		cylinder cyl;
 		fitCylinder(regions[i],nnearest,true,true,cyl);
+
 		//std::cout << cyl.ismodel << " " << cyl.rad << " " << cyl.len << " " << cyl.stepcov << " " << cyl.radratio << " " << cyl.x << " " << cyl.y << std::endl;
 		if(cyl.ismodel == true)
 		{		
 			if(cyl.rad*2 >= dmin && cyl.rad*2 <= dmax && cyl.len >= lmin)
 			{
+				std::cout << "Mike says: " << i << " :" << cyl.rad*2 << " " << cyl.len << " " << cyl.stepcov << " " << cyl.radratio << std::endl;
+				
 				if(cyl.stepcov <= stepcovmax && cyl.radratio > radratiomin)
 				{
 					if(cyl.x >= xmin && cyl.x <= xmax)
@@ -97,7 +103,12 @@ int main(int argc, char **argv)
 	}
 	std::sort(cylinders.rbegin(),cylinders.rend());
 	std::vector<pcl::PointCloud<PointTreeseg>::Ptr> cyls;
-	for(int i=0;i<cylinders.size();i++) cyls.push_back(cylinders[i].second);
+	std::cout << "Mike says: almost out of the woods " << cylinders.size() << std::endl;
+
+	for(int i=0;i<cylinders.size();i++) 
+	{
+		cyls.push_back(cylinders[i].second);
+	}
 	ss.str("");
 	ss << id[0] << ".intermediate.slice.clusters.regions.cylinders.pcd";
 	writeClouds(cyls,ss.str(),false);
@@ -106,8 +117,8 @@ int main(int argc, char **argv)
 	//
 	std::cout << "Principal component trimming: " << std::flush;
 	// MIKE CHANGED ANGLEMAX
-	float anglemax = 35;	
-	// float anglemax = 75;
+	// float anglemax = 35;	
+	float anglemax = 90;
 	std::vector<int> idx;
 	for(int j=0;j<cyls.size();j++)
 	{
@@ -119,6 +130,8 @@ int main(int argc, char **argv)
 		Eigen::Vector4f gvector(eigenvectors(0,2),eigenvectors(1,2),0,0);
 		Eigen::Vector4f cvector(eigenvectors(0,2),eigenvectors(1,2),eigenvectors(2,2),0);
 		float angle = pcl::getAngle3D(gvector,cvector) * (180/M_PI);
+		std::cout << "Mike says angle: " << angle << std::endl;
+		
 		if(angle >= (90 - anglemax) && angle <= (90 + anglemax)) idx.push_back(j);
 	}
 	std::vector<pcl::PointCloud<PointTreeseg>::Ptr> pca;
@@ -128,7 +141,7 @@ int main(int argc, char **argv)
 	std::cout << ss.str() << " | " << pca.size() << std::endl;
 	writeClouds(pca,ss.str(),false);
 	//
-	std::cout << "Concatenating stems: " << std::flush;
+	std::cout << "Concatenating stems: " << std::flush;ho
 	float expansionfactor = 0;
 	std::vector<pcl::PointCloud<PointTreeseg>::Ptr> stems;
 	stems = pca;
