@@ -70,11 +70,17 @@ int main(int argc, char **argv)
 	float ymin = coords[2];
 	float ymax = coords[3];
 	
-	float lmin = 2.5; //assumes 3m slice
-	float stepcovmax = 0.1;
-	// Mike changed this value
-	//float radratiomin = 0.9;
-	float radratiomin = 0.85;
+	float lmin = 2.3; //assumes 3m slice
+	// Mike changed these value
+	//float stepcovmax = 0.1; // default
+	//float radratiomin = 0.9; // default
+	//float radratiomin = 0.85;
+	//float radratiomin = 0.79;
+	//float stepcovmax = 0.1; // 20/23
+	//float radratiomin = 0.7; // 20/23
+	float stepcovmax = 0.15; // 22/23
+	float radratiomin = 0.45; // with 0.65 22/23
+	
 	std::cout << "Mike says: " << dmin << " " << dmax << " " << lmin << std::endl;
 	for(int i=0;i<regions.size();i++)
 	{
@@ -141,7 +147,7 @@ int main(int argc, char **argv)
 	std::cout << ss.str() << " | " << pca.size() << std::endl;
 	writeClouds(pca,ss.str(),false);
 	//
-	std::cout << "Concatenating stems: " << std::flush;ho
+	std::cout << "Concatenating stems: " << std::flush;
 	float expansionfactor = 0;
 	std::vector<pcl::PointCloud<PointTreeseg>::Ptr> stems;
 	stems = pca;
