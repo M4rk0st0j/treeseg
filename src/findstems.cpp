@@ -70,16 +70,16 @@ int main(int argc, char **argv)
 	float ymin = coords[2];
 	float ymax = coords[3];
 	
-	float lmin = 2.3; //assumes 3m slice
 	// Mike changed these value
+	//float lmin = 2.5; // default - assumes 3m slice
 	//float stepcovmax = 0.1; // default
 	//float radratiomin = 0.9; // default
-	//float radratiomin = 0.85;
-	//float radratiomin = 0.79;
-	//float stepcovmax = 0.1; // 20/23
-	//float radratiomin = 0.7; // 20/23
-	float stepcovmax = 0.15; // 22/23
-	float radratiomin = 0.45; // with 0.65 22/23
+	//float lmin = 2.3; // 23/23 for contenda_pm3 (assumes 3m slice)
+	//float stepcovmax = 0.15; // 23/23 for contenda_pm3
+	//float radratiomin = 0.45; // 23/23 for contenda_pm3
+	float lmin = 2.; // 8/8 for contenda_pm4 (assumes 3m slice)
+	float stepcovmax = 0.15; // 8/8 for contenda_pm4
+	float radratiomin = 0.4; // 8/8 for contenda_pm4
 	
 	std::cout << "Mike says: " << dmin << " " << dmax << " " << lmin << std::endl;
 	for(int i=0;i<regions.size();i++)
