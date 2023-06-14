@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/plotcoords.dir/src/plotcoords.cpp.o -o plotcoords   -L/home/miguelvnogueira/treeseg/lib  -L/home/miguelvnogueira/treeseg/lib/riegl 

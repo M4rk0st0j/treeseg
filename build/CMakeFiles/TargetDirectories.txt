@@ -1,0 +1,17 @@
+/home/miguelvnogueira/treeseg/build/CMakeFiles/treeseg.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/leafsep.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/plotcoords.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/nearestneighbour.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/downsample.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/thin.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/getdtmslice.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/findstems.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/segmentstem.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/getcrownvolume.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/segmentcrown.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/sepwoodleaf.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/pcdPointTreeseg2txt.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/txtPointTreeseg2pcd.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/pcdPointXYZRGB2txt.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/edit_cache.dir
+/home/miguelvnogueira/treeseg/build/CMakeFiles/rebuild_cache.dir
