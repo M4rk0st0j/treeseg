@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 	//float lmin = 2.3; // 23/23 for contenda_pm3 (assumes 3m slice)
 	//float stepcovmax = 0.15; // 23/23 for contenda_pm3
 	//float radratiomin = 0.45; // 23/23 for contenda_pm3
-	float lmin = 2.; // 8/8 for contenda_pm4 (assumes 3m slice)
+	float lmin = 2.; // 8/8 for contenda_pm4
 	float stepcovmax = 0.15; // 8/8 for contenda_pm4
 	float radratiomin = 0.4; // 8/8 for contenda_pm4
 	
